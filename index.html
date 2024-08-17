@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Responsive Web Page with Footer</title>
+    <title>Responsive Web Page with Toggle Menu</title>
     <link rel="stylesheet" href="styles.css">
     <style>
         * {
@@ -23,61 +23,63 @@ body {
 }
 
 header {
-    background: radial-gradient(rgb(86, 84, 84),pink);
+    background: radial-gradient(rgb(86, 84, 84), pink);
     color: white;
     text-align: center;
-    height: 240px;
+    padding: 20px 0;
 }
 
 header h1 {
     margin: 10px 0;
 }
 
+nav {
+    position: relative;
+}
+
 nav ul {
     list-style-type: none;
     text-align: right;
-   
+    padding-right: 20px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 nav ul li {
-    display: inline;
-    margin: 20px;
-    padding: 4px;
-    text-decoration: none;
-
-
-   
+    margin: 0 10px;
 }
 
 nav ul li a {
-    background-color:gery;
+    background-color: grey;
     color: #f4f4f4;
-   text-decoration: none;
+    text-decoration: none;
     border-radius: 10px;
     font-weight: bold;
     font-size: 20px;
-    box-shadow: 5px 10px 7px rgb(59, 31, 31);
-
-    
-    
+    padding: 10px;
+    display: block;
 }
-header nav ul li a:hover {
+
+nav ul li a:hover {
     text-decoration: underline;
     background-color: red;
-    width: 50px;
-    height: max-content;
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    padding: 10px;
 }
 
 main {
     flex: 1;
-    padding: 20px 0;
-    background: linear-gradient(grey,cyan);
-  
+    padding: 20px;
+    background: linear-gradient(grey, cyan);
 }
 
 main section {
     margin-bottom: 20px;
-    padding: 0 20px;
 }
 
 main section h2 {
@@ -126,9 +128,33 @@ footer ul li a:hover {
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    header nav ul li {
+    .menu-toggle {
         display: block;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        text-align: center;
+        padding-right: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 100%;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
         margin: 10px 0;
+    }
+
+    nav ul li a {
+        padding: 15px;
+        font-size: 18px;
     }
 
     footer .footer-content {
@@ -154,8 +180,8 @@ footer ul li a:hover {
         font-size: 18px;
     }
 
-    header nav ul li {
-        margin: 5px 0;
+    nav ul li a {
+        font-size: 16px;
     }
 }
 
@@ -165,7 +191,10 @@ footer ul li a:hover {
     <header>
         <h1>My Website</h1>
         <nav>
-            <ul>
+            <div class="menu-toggle" id="menu-toggle">
+                &#9776; <!-- Menu icon -->
+            </div>
+            <ul id="nav-list">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
@@ -202,5 +231,14 @@ footer ul li a:hover {
             </ul>
         </div>
     </footer>
+
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navList = document.getElementById('nav-list');
+
+        menuToggle.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
