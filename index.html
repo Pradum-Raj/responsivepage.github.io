@@ -82,6 +82,25 @@ main {
 main section {
     margin-bottom: 20px;
 }
+main {
+    flex: 1;
+    padding: 20px;
+    background: url('beautiful girls long (30).jpg') no-repeat center center;
+    background-size: cover;
+    color: #fff; /* Change text color if necessary */
+}
+
+@media (max-width: 768px) {
+    main {
+        background-size: auto 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        background-size: contain;
+    }
+}
 
 main section h2 {
     margin-bottom: 10px;
@@ -202,9 +221,10 @@ footer ul li a:hover {
             </div>
             <ul id="nav-list">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="about.html">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#contact">Contact</a></li>
+                <li><a href="Images.html">Images</a></li>
             </ul>
         </nav>
     </header>
